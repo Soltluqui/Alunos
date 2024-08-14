@@ -14,7 +14,6 @@ class AlunoGUI(tk.Tk):
 
     # Método para criar os widgets
     def create_widgets(self):
-        
         # Criação dos widgets
         self.lb_id = tk.Label(self, text='ID: ')
         self.lb_id.pack()
