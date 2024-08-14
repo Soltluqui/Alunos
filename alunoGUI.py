@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
-from aluno import Aluno
+from Aluno import Aluno
 
 class AlunoGUI(tk.Tk):
     def __init__(self):
@@ -118,11 +118,17 @@ class AlunoGUI(tk.Tk):
 
     # Método para deletar um aluno
     def deletar(self):
+        id = int(self.et_id.get())
         try:
-            id = int(self.et_id.get())
-            self.aluno.excluir(id)
-            messagebox.showinfo('Exclusão', 'Aluno excluído com sucesso!')
-            self.consultar()
+            result = messagebox.askquestion('Atenção', 'Deseja realmente excluir o aluno?', type='yesno')
+            if result == 'yes':
+                self.aluno.excluir(id)
+                messagebox.showinfo('Exclusão', 'Aluno excluído com sucesso!')
+                self.consultar()
+            else:
+                messagebox.showinfo('Exclusão', 'Exclusão cancelada!')
+                self.consultar()
+                
         except:
             messagebox.showerror('Erro', 'Selecione um aluno')
 
